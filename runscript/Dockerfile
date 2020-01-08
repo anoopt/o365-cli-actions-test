@@ -1,5 +1,5 @@
 # Container image that runs your code
-FROM node:10
+FROM mcr.microsoft.com/powershell:latest
 
 # Install Office 365 CLI
 RUN npm i -g @pnp/office365-cli
