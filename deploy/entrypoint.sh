@@ -28,9 +28,10 @@ main() {
       o365 spo app deploy --name $(basename $APP_FILE_PATH) --scope sitecollection --appCatalogUrl $SITE_COLLECTION_URL
       o365 spo app install --id $appId --siteUrl $SITE_COLLECTION_URL --scope sitecollection
     else
-      o365 spo app add -p $APP_FILE_PATH --overwrite
+      appId=$(o365 spo app add -p $APP_FILE_PATH --overwrite)
       o365 spo app deploy --name $(basename $APP_FILE_PATH)
     fi
+    echo ::set-output name=APP_ID::$appId
     echo "Upload and deployment complete."
 }
 
